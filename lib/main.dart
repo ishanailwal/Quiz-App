@@ -29,6 +29,7 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
+  int c = qB.returnScore();
   List<Icon> scoreKeeper = [];
 
   void checkAnswer(bool userPicked) {
@@ -36,16 +37,18 @@ class _QuizPageState extends State<QuizPage> {
 
     setState(() {
       if (qB.isFinished() == true) {
-        Alert(context: context, title: "FINISHED!", desc: "End of the quiz!")
+        Alert(context: context, title: "SCORE", desc: "Your score is $c!")
             .show();
         qB.reset();
         scoreKeeper = [];
+        c = qB.returnScore();
       } else {
         if (userPicked == correctAnswer) {
           scoreKeeper.add(Icon(
             Icons.check,
             color: Colors.green,
           ));
+          c++;
         } else {
           scoreKeeper.add(Icon(
             Icons.close,
