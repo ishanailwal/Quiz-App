@@ -2,6 +2,7 @@ import 'questions.dart';
 
 class QuizBrain {
   int _questionNumber = 0;
+  int _c = 0;
   List<Question> _questionBank = [
     Question('Some cats are actually allergic to humans', true),
     Question('You can lead a cow down stairs but not up stairs.', false),
@@ -54,6 +55,12 @@ class QuizBrain {
   }
 
   void reset() {
+    _c = 0;
     _questionNumber = 0;
   }
+
+  int returnScore() {
+    return _c;
+  }
 }
+
